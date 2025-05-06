@@ -7,17 +7,17 @@
 
 /* Mengirimkan informasi yang tersimpan di akar dari pohon Biner yg tdk kosong*/
 infotype GetAkar(BinTree P) {
-
+    return Info(P);
 }
 
 /* Mengirimkan anak kiri pohon biner P yang TIDAK kosong */
 BinTree GetLeft(BinTree P) {
-
+    return Left(P);
 }
 
 /* Mengirimkan anak kanan pohon biner P yang TIDAK kosong */
 BinTree GetRight(BinTree P) {
-
+    return Right(P);
 }
 
 
@@ -27,13 +27,24 @@ BinTree GetRight(BinTree P) {
 /* Jika Alokasi berhasil, maka address != Nil dan Info (P) = X */
 /* Mengirimkan address hasil alokasi sebuah elemen */
 address Alokasi(infotype X) {
-
+    address tree = (address)malloc(sizeof(Node));
+    if (tree != NULL) {
+        Info(tree) = X;
+        Left(tree) = NULL;
+        Right(tree) = NULL;
+    }
+    return tree;
 }
 
 /* Menghasilkan pohon kosong (Nil) jika alokasi gagal */
 /* Menghasilkan sebuah pohon biner dari A, L dan R, jika alokasi berhasil */
 BinTree Tree(infotype Akar, BinTree L, BinTree R) {
-
+    BinTree tree = Alokasi(Akar);
+    if (tree != NULL) {
+        Left(tree) = L;
+        Right(tree) = R;
+    }
+    return tree;
 }
 
 /* IS : BinTree Sembarang */
@@ -41,7 +52,11 @@ BinTree Tree(infotype Akar, BinTree L, BinTree R) {
 /* Menghasilkan sebuah pohon biner dari A, L dan R, jika alokasi berhasil */
 /* Menghasilkan pohon kosong (Nil) jika alokasi gagal */
 void MakeTree(infotype Akar, BinTree L, BinTree R, BinTree* P) {
-
+    *P = Alokasi(Akar);
+    if (*P != NULL) {
+        Left(*P) = L;
+        Right(*P) = R;
+    }
 }
 
 /* Membentuk sebuah BinTree P dari pita karakter yang dibaca */
