@@ -250,7 +250,18 @@ boolean BSearch(BinTree P, infotype X) {
 /* Mengirimkan alamat Node jika ada node dari P yang bernilai X */
 /* Mengirimkan Nil jika tidak ditemukan */
 address BinSearch(BinTree P, infotype X) {
-
+    if (P==NULL){
+        return NULL;
+    }
+    if (Info(P)==X){
+        return P;
+    }
+    address temp = BinSearch(Left(P),X);
+    if (temp == NULL){
+        temp = BinSearch(Right(P),X);
+    }
+    
+    return temp;
 }
 
 /* Menghasilkan sebuah pohon Binary Search Tree P dengan tambahan simpul X. */

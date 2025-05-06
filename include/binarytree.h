@@ -110,7 +110,7 @@ int nbDaun(BinTree P);
 /* Mengirimkan true jika P adalah pohon condong kiri */
 boolean IsSkewLeft(BinTree P);
 /* Mengirimkan true jika P adalah pohon condong kanan */
-boolean IsSkewRight(BinTree P);
+boolean IsSkewRight(BinTree P); 
 /* Mengirimkan level dari node X yang merupakan salah satu simpul dari */
 /* pohon biner P. Akar (P) levelnya adalah 1. Pohon tidak kosong */
 int Level(BinTree P, infotype X);
@@ -177,7 +177,7 @@ void InsSearch(BinTree* P, infotype X);
 /* Menghapus seluruh elemen Tree secara Rekursif */
 /* IS : P terdefinisi */
 /* FS : Semua simpul P sudah dihapus secara PostOrder :  Kiri, Kanan, Akar */
-void DestroyTree(BinTree* P);
+void DestroyTree(BinTree* P); //gausah
 /* IS : Pohon P TIDAK kosong */
 /* FS : Nilai X yang dihapus pasti ada, sebuah node dengan nilai X dihapus */
 void DelBTree(BinTree* P, infotype X);
