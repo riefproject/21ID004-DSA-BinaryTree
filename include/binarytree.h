@@ -17,7 +17,7 @@
 #define InfoList(L) (L)->info
 #define Next(L) (L)->next
 
-typedef int infotype;
+typedef char infotype;
 typedef struct tElmtTree* address;
 typedef struct tElmtTree {
     infotype info;
@@ -110,7 +110,7 @@ int nbDaun(BinTree P);
 /* Mengirimkan true jika P adalah pohon condong kiri */
 boolean IsSkewLeft(BinTree P);
 /* Mengirimkan true jika P adalah pohon condong kanan */
-boolean IsSkewRight(BinTree P); 
+boolean IsSkewRight(BinTree P);
 /* Mengirimkan level dari node X yang merupakan salah satu simpul dari */
 /* pohon biner P. Akar (P) levelnya adalah 1. Pohon tidak kosong */
 int Level(BinTree P, infotype X);
@@ -119,7 +119,7 @@ int Level(BinTree P, infotype X);
 /* Rekurens : 1 + maksimal (Depth (Anak Kiri), Depth  (Anak Kanan)) */
 int Depth(BinTree P);
 /* Mengirimkan Nilai terbesar dari dua data */
-int Max(infotype Data1, infotype Data2);
+infotype Max(infotype Data1, infotype Data2);
 
 /***** Operasi Lain *****/
 

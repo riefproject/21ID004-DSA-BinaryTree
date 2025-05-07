@@ -89,7 +89,7 @@ boolean IsBiner(BinTree P) {
 
 /* Mengirimkan true jika BinTree KOSONG */
 boolean IsEmpty(BinTree P) {
-
+    return P == NULL;
 }
 
 /***** Traversal *****/
@@ -99,7 +99,7 @@ boolean IsEmpty(BinTree P) {
 /* IS : P terdefinisi */
 /* FS : Semua simpul P sudah diproses secara PreOrder : Akar, Kiri, Kanan */
 void PreOrder(BinTree P) {
-    if (P!= NULL){
+    if (P != NULL) {
         printf("%c", Info(P));
         InOrder(Left(P));
         InOrder(Right(P));
@@ -110,7 +110,7 @@ void PreOrder(BinTree P) {
 /* IS : P terdefinisi */
 /* FS : Semua simpul P sudah diproses secara InOrder : Kiri, Arak, Kanan */
 void InOrder(BinTree P) {
-    if (P!= NULL){
+    if (P != NULL) {
         InOrder(Left(P));
         printf("%c", Info(P));
         InOrder(Right(P));
@@ -121,14 +121,14 @@ void InOrder(BinTree P) {
 /* IS : P terdefinisi */
 /* FS : Semua simpul P sudah diproses secara PostOrder :  Kiri, Kanan, Akar */
 void PostOrder(BinTree P) {
-    if (P!= NULL){
+    if (P != NULL) {
         InOrder(Right(P));
         InOrder(Left(P));
         printf("%c", Info(P));
     }
 }
 
-void LevelOrder(BinTree P){
+void LevelOrder(BinTree P) {
 
 }
 
@@ -143,18 +143,7 @@ void PrintTree(BinTree P, int h) {
 
 /* Mengirimkan true jika ada node dari P yang bernilai X */
 boolean Search(BinTree P, infotype X) {
-    if (P==NULL){
-        return NULL;
-    }
-    if (Info(P)==X){
-        return true;
-    }
-    address temp = BinSearch(Left(P),X);
-    if (temp == NULL){
-        temp = BinSearch(Right(P),X);
-    }
-    
-    return temp;
+
 }
 
 
@@ -196,7 +185,7 @@ int Depth(BinTree P) {
 
 /* Mengirimkan Nilai terbesar dari dua data */
 infotype Max(infotype Data1, infotype Data2) {
-    return Data1<Data2? Data2:Data1;
+    return Data1 < Data2 ? Data2 : Data1;
 }
 
 
@@ -206,7 +195,8 @@ infotype Max(infotype Data1, infotype Data2) {
 /* IS : P boleh kosong */
 /* FS : P bertambah simpulnya, dengan X sebagai simpul daun terkiri */
 void AddDaunTerkiri(BinTree* P, infotype X) {
-
+    if (*P == NULL) *P = Alokasi(X);
+    else AddDaunTerkiri(&Left(*P), X);
 }
 
 /* IS : P tidak kosong, X adalah salah satu daun Pohon Biner P */
@@ -277,17 +267,17 @@ boolean BSearch(BinTree P, infotype X) {
 /* Mengirimkan alamat Node jika ada node dari P yang bernilai X */
 /* Mengirimkan Nil jika tidak ditemukan */
 address BinSearch(BinTree P, infotype X) {
-    if (P==NULL){
+    if (P == NULL) {
         return NULL;
     }
-    if (Info(P)==X){
+    if (Info(P) == X) {
         return P;
     }
-    address temp = BinSearch(Left(P),X);
-    if (temp == NULL){
-        temp = BinSearch(Right(P),X);
+    address temp = BinSearch(Left(P), X);
+    if (temp == NULL) {
+        temp = BinSearch(Right(P), X);
     }
-    
+
     return temp;
 }
 
