@@ -119,7 +119,7 @@ void selectMenu(int choice, BinTree* tree) {
             break;
         case 6:
             // Traversal LevelOrder
-            // LevelOrder(tree);
+            LevelOrder(*tree);
             break;
         case 7:
             // Search Node Tree

@@ -129,7 +129,21 @@ void PostOrder(BinTree P) {
 }
 
 void LevelOrder(BinTree P) {
-
+    int jmlNode = nbElmt(P);
+    BinTree queue[jmlNode];
+    int front=0, rear=0;
+    queue[rear++] = P;
+    while(front<rear){
+        BinTree current = queue[front++];
+        printf("%c ",Info(current));
+        if(Left(current)!=NULL){
+            queue[rear++]= Left(current);
+        }
+        if(Right(current)!=NULL){
+            queue[rear++]= Right(current);
+        }
+    }
+    printf("\n");
 }
 
 /* IS : P terdefinisi, h adalah jarak indentasi */
@@ -143,7 +157,7 @@ void PrintTree(BinTree P, int h) {
 
 /* Mengirimkan true jika ada node dari P yang bernilai X */
 boolean Search(BinTree P, infotype X) {
-
+   
 }
 
 
