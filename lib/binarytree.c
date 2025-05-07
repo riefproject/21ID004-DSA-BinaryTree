@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "binarytree.h"
+#include "../include/binarytree.h"
 
 /**** Primitif *****/
 /* Selektor */
@@ -101,8 +101,8 @@ boolean IsEmpty(BinTree P) {
 void PreOrder(BinTree P) {
     if (P != NULL) {
         printf("%c", Info(P));
-        InOrder(Left(P));
-        InOrder(Right(P));
+        PreOrder(Left(P));
+        PreOrder(Right(P));
     }
 }
 
@@ -122,8 +122,8 @@ void InOrder(BinTree P) {
 /* FS : Semua simpul P sudah diproses secara PostOrder :  Kiri, Kanan, Akar */
 void PostOrder(BinTree P) {
     if (P != NULL) {
-        InOrder(Right(P));
-        InOrder(Left(P));
+        PostOrder(Left(P));
+        PostOrder(Right(P));
         printf("%c", Info(P));
     }
 }
@@ -197,8 +197,15 @@ int nbElmt(BinTree P) {
 
 /* Mengirimkan banyak daun (node) pohon biner P */
 int nbDaun(BinTree P) {
-
+    if (P == NULL) {
+        return 0;
+    }
+    if (Left(P) == NULL && Right(P) == NULL) {
+        return 1;
+    }
+    return nbDaun(Left(P)) + nbDaun(Right(P));
 }
+
 
 /* Mengirimkan true jika P adalah pohon condong kiri */
 boolean IsSkewLeft(BinTree P) {

@@ -1,4 +1,4 @@
-#include "binarytree.h"
+#include "../include/binarytree.h"
 int charToMorse(BinTree root, int target, char *path, int depth)
 {
     if (root == NULL)

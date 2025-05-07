@@ -11,7 +11,7 @@
 */
 #include <stdio.h>
 #include <string.h>
-#include "binarytree.h"
+#include "include/binarytree.h"
 #include "include/morse.h"
 
 void showMenu()
@@ -21,7 +21,7 @@ void showMenu()
     printf("2. Print Tree\n");
     printf("3. Traversal PreOrder\n");
     printf("4. Traversal InOrder\n");
-    printf("5. Traversal PreOrder\n");
+    printf("5. Traversal PostOrder\n");
     printf("6. Traversal LevelOrder\n");
     printf("7. Search Node Tree\n");
     printf("8. Jumlah Daun/Leaf\n");
@@ -145,7 +145,7 @@ void selectMenu(int choice, BinTree *tree)
             break;
         case 8:
             // Jumlah Daun/Leaf
-            // printf("Jumlah daun: %d\n", nbDaun(tree));
+            printf("Jumlah daun: %d\n", nbDaun(*tree));
             break;
         case 9:
             // Mencari Keadalaman Node Tree
@@ -308,6 +308,6 @@ int main()
 {
     BinTree tree = NULL;
     int choice;
-    selectMenuMorse(choice, &tree);
+    selectMenuMorse(choice, &tree); 
     // selectMenu(choice, &tree);
 }
