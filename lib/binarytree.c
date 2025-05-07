@@ -149,8 +149,33 @@ void LevelOrder(BinTree P) {
 /* IS : P terdefinisi, h adalah jarak indentasi */
 /* FS : Semua simpul P sudah ditulis dengan indentasi */
 void PrintTree(BinTree P, int h) {
-
+    int jmlNode = nbElmt(P);
+    BinTree queue[jmlNode];
+    int front=0, rear=0;
+    queue[rear++] = P;
+    while(front<rear){
+        BinTree current = queue[front++];
+        printf("info node: %c \n",Info(current));
+        if(Left(current)!=NULL){
+            printf("info node left son: %c \n",Info(Left(current)));
+        }else {
+            printf("info node left son: (kosong) \n");
+        }
+        if(Right(current)!=NULL){
+            printf("info node right son: %c \n\n",Info(Right(current)));
+        }else {
+            printf("info node left son: (kosong) \n\n");
+        }
+        if(Left(current)!=NULL){
+            queue[rear++]= Left(current);
+        }
+        if(Right(current)!=NULL){
+            queue[rear++]= Right(current);
+        }
+    }
+    printf("\n");
 }
+
 
 
 /***** Search *****/

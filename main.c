@@ -101,7 +101,7 @@ void selectMenu(int choice, BinTree* tree) {
             break;
         case 2:
             // Print Tree
-            // PrintTree(tree, 0);
+            PrintTree(*tree, 0);
             break;
         case 3:
             // Traversal PreOrder
