@@ -272,24 +272,24 @@ void selectMenuMorse(int choice, BinTree *tree)
             printf("Masukkan kode morse: ");
             scanf(" %[^\n]", morseInput);
             MorseStringToText(*tree, morseInput, output);
-            printf("%s", output);
-            // char charNode = MorseToChar(*tree, path);
-            // if (charNode != '*' && charNode != '(' && charNode != ')')
-            // {
-            //     printf("hasil dari pencarian kode morse: %c", charNode);
-            // }
-            // else if (charNode == '*')
-            // {
-            //     printf("error, tree masih kosong!\n");
-            // }
-            // else if (charNode == '(')
-            // {
-            //     printf("error, bukan karakter morse!\n");
-            // }
-            // else
-            // {
-            //     printf("karakter tidak ditemukan, jalur tidak valid!\n");
-            // }
+            
+            if (strcmp(output, "*") != 0 && strcmp(output, "(") != 0 && strcmp(output, ")") != 0)
+            {
+                printf("hasil dari pencarian kode morse: %s\n", output);
+            }
+            else if (strcmp(output, "*") == 0)
+            {
+                printf("error, tree masih kosong!\n");
+            }
+            else if (strcmp(output, "(") == 0)
+            {
+                printf("error, bukan karakter morse!\n");
+            }
+            else
+            {
+                printf("karakter tidak ditemukan, jalur tidak valid!\n");
+            }
+
 
             break;
         case 4:

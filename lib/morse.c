@@ -53,24 +53,6 @@ char MorseToChar(BinTree root, char *path)
     return ')';
 }
 
-// void MorseStringToText(BinTree root, const char *morseInput, char *output)
-// {
-//     char token[10][100];
-//     char charNode[20];
-//     int i = 0, j = 0, k=0, l=0;
-//     for(int i=0; morseInput[i]!='\0'; i++){
-//         if (morseInput[i]!=' '){
-//             token[k][l]= morseInput[i];
-//             l++;
-//         }
-//         k++;
-//     }
-
-//     for(int l=0; l<k;k++){
-//         l=0;
-//         output[l] = MorseToChar(root, token[l]);
-//     }
-// }
 void MorseStringToText(BinTree root, const char *morseInput, char *output)
 {
     char token[100][10]; // Maks 100 morse tokens, masing2 maks 10 char
