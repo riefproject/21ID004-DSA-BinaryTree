@@ -12,8 +12,10 @@
 #include <stdio.h>
 #include <string.h>
 #include "binarytree.h"
+#include "include/morse.h"
 
-void showMenu() {
+void showMenu()
+{
     printf("\n\n");
     printf("1. Insert node\n");
     printf("2. Print Tree\n");
@@ -29,12 +31,15 @@ void showMenu() {
     printf("Masukkan pilihan: ");
 }
 
-void selectMenu(int choice, BinTree* tree) {
-    do {
+void selectMenu(int choice, BinTree *tree)
+{
+    do
+    {
         printf("banyak elemen tree sekarang: %d", nbElmt(*tree));
         showMenu();
         scanf("%d", &choice);
-        switch (choice) {
+        switch (choice)
+        {
         case 1:
             // Insert node
             /*
@@ -52,49 +57,61 @@ void selectMenu(int choice, BinTree* tree) {
             infotype data;
             printf("Masukkan data node: ");
             scanf(" %c", &data);
-            if (IsEmpty(*tree)) {
+            if (IsEmpty(*tree))
+            {
                 AddDaunTerkiri(tree, data);
                 printf("Node %c ditambahkan sebagai akar.\n", data);
             }
-            else {
+            else
+            {
                 infotype parentData;
                 printf("Masukkan data parent: ");
                 scanf(" %c", &parentData);
                 BinTree pr = BinSearch(*tree, parentData);
-                if (pr) {
-                    if (Left(pr) == NULL && Right(pr) == NULL) {
+                if (pr)
+                {
+                    if (Left(pr) == NULL && Right(pr) == NULL)
+                    {
                         printf("Parent belum memiliki anak.\n");
                         printf("Tentukan letak input (\"kiri\" atau \"kanan\")\n");
                         char side[6];
-                        do {
+                        do
+                        {
 
                             scanf("%s", side);
-                            if (strcasecmp(side, "kiri") == 0) {
+                            if (strcasecmp(side, "kiri") == 0)
+                            {
                                 Left(pr) = Alokasi(data);
                                 printf("Node %c ditambahkan sebagai anak kiri dari %c.\n", data, parentData);
                             }
-                            else if (strcasecmp(side, "kanan") == 0) {
+                            else if (strcasecmp(side, "kanan") == 0)
+                            {
                                 Right(pr) = Alokasi(data);
                                 printf("Node %c ditambahkan sebagai anak kanan dari %c.\n", data, parentData);
                             }
-                            else {
+                            else
+                            {
                                 printf("Input tidak valid. Harus \"kiri\" atau \"kanan\".\n");
                             }
                         } while (strcasecmp(side, "kiri") != 0 && strcasecmp(side, "kanan") != 0);
                     }
-                    else if (Left(pr) == NULL) {
+                    else if (Left(pr) == NULL)
+                    {
                         Left(pr) = Alokasi(data);
                         printf("Node %c ditambahkan sebagai anak kiri dari %c.\n", data, parentData);
                     }
-                    else if (Right(pr) == NULL) {
+                    else if (Right(pr) == NULL)
+                    {
                         Right(pr) = Alokasi(data);
                         printf("Node %c ditambahkan sebagai anak kanan dari %c.\n", data, parentData);
                     }
-                    else {
+                    else
+                    {
                         printf("Parent sudah memiliki 2 anak. Tidak bisa menambah node baru.\n");
                     }
                 }
-                else {
+                else
+                {
                     printf("Parent tidak ditemukan.\n");
                 }
             }
@@ -137,8 +154,10 @@ void selectMenu(int choice, BinTree* tree) {
         case 10:
             // Membandingkan 2 Node Tree
             infotype data1, data2;
-            printf("Masukkan data node 1: "); scanf("%c", &data1);
-            printf("Masukkan data node 2: "); scanf("%c", &data2);
+            printf("Masukkan data node 1: ");
+            scanf("%c", &data1);
+            printf("Masukkan data node 2: ");
+            scanf("%c", &data2);
             printf("Nilai terbesar dari %d dan %d adalah: %d\n", data1, data2, Max(data1, data2));
             break;
         case 11:
@@ -150,27 +169,8 @@ void selectMenu(int choice, BinTree* tree) {
     } while (choice != 11);
 }
 
-int charToMorse(BinTree root, int target, char* path, int depth) {
-    if (root == NULL)
-        return 0;
-
-    if (root->info == target) {
-        path[depth] = '\0';  // Null-terminate string
-        return 1;
-    }
-
-    path[depth] = '.';  // kiri
-    if (charToMorse(root->left, target, path, depth + 1))
-        return 1;
-
-    path[depth] = '-';  // kanan
-    if (charToMorse(root->right, target, path, depth + 1))
-        return 1;
-
-    return 0;
-
-}
-void showMenuMorse() {
+void showMenuMorse()
+{
     printf("\n\n");
     printf("1. Insert node\n");
     printf("2. Char to Morse\n");
@@ -179,58 +179,73 @@ void showMenuMorse() {
     printf("5. Exit\n");
     printf("Masukkan pilihan: ");
 }
-void selectMenuMorse(int choice, BinTree* tree) {
-    do {
+void selectMenuMorse(int choice, BinTree *tree)
+{
+    do
+    {
         showMenuMorse();
         scanf("%d", &choice);
-        switch (choice) {
+        switch (choice)
+        {
         case 1:
             infotype data;
             printf("Masukkan data node: ");
             scanf(" %c", &data);
-            if (IsEmpty(*tree)) {
+            if (IsEmpty(*tree))
+            {
                 AddDaunTerkiri(tree, data);
                 printf("Node %c ditambahkan sebagai akar.\n", data);
             }
-            else {
+            else
+            {
                 infotype parentData;
                 printf("Masukkan data parent: ");
                 scanf(" %c", &parentData);
                 BinTree pr = BinSearch(*tree, parentData);
-                if (pr) {
-                    if (Left(pr) == NULL && Right(pr) == NULL) {
+                if (pr)
+                {
+                    if (Left(pr) == NULL && Right(pr) == NULL)
+                    {
                         printf("Parent belum memiliki anak.\n");
                         printf("Tentukan letak input (\"kiri\" atau \"kanan\")\n");
                         char side[6];
-                        do {
+                        do
+                        {
 
                             scanf("%s", side);
-                            if (strcasecmp(side, "kiri") == 0) {
+                            if (strcasecmp(side, "kiri") == 0)
+                            {
                                 Left(pr) = Alokasi(data);
                                 printf("Node %c ditambahkan sebagai anak kiri dari %c.\n", data, parentData);
                             }
-                            else if (strcasecmp(side, "kanan") == 0) {
+                            else if (strcasecmp(side, "kanan") == 0)
+                            {
                                 Right(pr) = Alokasi(data);
                                 printf("Node %c ditambahkan sebagai anak kanan dari %c.\n", data, parentData);
                             }
-                            else {
+                            else
+                            {
                                 printf("Input tidak valid. Harus \"kiri\" atau \"kanan\".\n");
                             }
                         } while (strcasecmp(side, "kiri") != 0 && strcasecmp(side, "kanan") != 0);
                     }
-                    else if (Left(pr) == NULL) {
+                    else if (Left(pr) == NULL)
+                    {
                         Left(pr) = Alokasi(data);
                         printf("Node %c ditambahkan sebagai anak kiri dari %c.\n", data, parentData);
                     }
-                    else if (Right(pr) == NULL) {
+                    else if (Right(pr) == NULL)
+                    {
                         Right(pr) = Alokasi(data);
                         printf("Node %c ditambahkan sebagai anak kanan dari %c.\n", data, parentData);
                     }
-                    else {
+                    else
+                    {
                         printf("Parent sudah memiliki 2 anak. Tidak bisa menambah node baru.\n");
                     }
                 }
-                else {
+                else
+                {
                     printf("Parent tidak ditemukan.\n");
                 }
             }
@@ -240,19 +255,42 @@ void selectMenuMorse(int choice, BinTree* tree) {
             char target;
             printf("Masukkan karakter yang ingin dicari: ");
             scanf(" %c", &target);
-            char path[100];  // Buffer untuk menyimpan jalur
-            if (charToMorse(*tree, target, path, 0)) {
+            char path[100]; // Buffer untuk menyimpan jalur
+            if (charToMorse(*tree, target, path, 0))
+            {
                 printf("Jalur ke %c: %s\n", target, path);
             }
-            else {
+            else
+            {
                 printf("Karakter tidak ditemukan dalam pohon.\n");
             }
             break;
         case 3:
             // Morse to Char
+            printf("Masukkan kode morse: ");
+            scanf(" %s", path);
+            char charNode = MorseToChar(*tree, path);
+            if (charNode != '*' && charNode != '(' && charNode != ')')
+            {
+                printf("hasil dari pencarian kode morse: %c", charNode);
+            }
+            else if (charNode == '*')
+            {
+                printf("error, tree masih kosong!\n");
+            }
+            else if (charNode == '(')
+            {
+                printf("error, bukan karakter morse!\n");
+            }
+            else
+            {
+                printf("karakter tidak ditemukan, jalur tidak valid!\n");
+            }
+
             break;
         case 4:
             // Print Tree
+            PrintTree(*tree, 0);
             break;
         case 5:
             printf("Keluar dari program...\n");
@@ -262,7 +300,8 @@ void selectMenuMorse(int choice, BinTree* tree) {
         }
     } while (choice != 5);
 }
-int main() {
+int main()
+{
     BinTree tree = NULL;
     int choice;
     selectMenuMorse(choice, &tree);
