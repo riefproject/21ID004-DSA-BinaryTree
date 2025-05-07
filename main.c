@@ -49,19 +49,17 @@ void selectMenu(int choice, BinTree* tree) {
              *    c. JIKA HANYA OUNYA SATU ANAK: insert node sebagai anak kedua baik L/R
              *    d. JIKA SUDAH PUNYA 2 ANAK: tampilkan error
              */
-            getchar();
             infotype data;
             printf("Masukkan data node: ");
-            scanf("%c", &data);
+            scanf(" %c", &data);
             if (IsEmpty(*tree)) {
                 AddDaunTerkiri(tree, data);
                 printf("Node %c ditambahkan sebagai akar.\n", data);
             }
             else {
-                getchar();
                 infotype parentData;
                 printf("Masukkan data parent: ");
-                scanf("%c", &parentData);
+                scanf(" %c", &parentData);
                 BinTree pr = BinSearch(*tree, parentData);
                 if (pr) {
                     if (Left(pr) == NULL && Right(pr) == NULL) {
@@ -125,8 +123,8 @@ void selectMenu(int choice, BinTree* tree) {
             // Search Node Tree
             printf("Masukkan nilai yang dicari: ");
             infotype x;
-            scanf("%d", &x);
-            // printf(Search(tree, x) ? "Node %d ditemukan.\n", x : "Node %d tidak ditemukan.\n", x);
+            scanf(" %c", &x);
+            printf(Search(*tree, x) ? "Node ditemukan.\n" : "Node tidak ditemukan.\n");
             break;
         case 8:
             // Jumlah Daun/Leaf
@@ -134,7 +132,7 @@ void selectMenu(int choice, BinTree* tree) {
             break;
         case 9:
             // Mencari Keadalaman Node Tree
-            // printf("Kedalaman tree: %d\n", Depth(tree));
+            printf("Kedalaman tree: %d\n", Depth(*tree));
             break;
         case 10:
             // Membandingkan 2 Node Tree
@@ -152,6 +150,7 @@ void selectMenu(int choice, BinTree* tree) {
     } while (choice != 11);
 }
 
+// void selectMenuMorse(BinTree)
 int main() {
     BinTree tree = NULL;
     int choice;

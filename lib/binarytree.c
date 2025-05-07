@@ -131,16 +131,16 @@ void PostOrder(BinTree P) {
 void LevelOrder(BinTree P) {
     int jmlNode = nbElmt(P);
     BinTree queue[jmlNode];
-    int front=0, rear=0;
+    int front = 0, rear = 0;
     queue[rear++] = P;
-    while(front<rear){
+    while (front < rear) {
         BinTree current = queue[front++];
-        printf("%c ",Info(current));
-        if(Left(current)!=NULL){
-            queue[rear++]= Left(current);
+        printf("%c ", Info(current));
+        if (Left(current) != NULL) {
+            queue[rear++] = Left(current);
         }
-        if(Right(current)!=NULL){
-            queue[rear++]= Right(current);
+        if (Right(current) != NULL) {
+            queue[rear++] = Right(current);
         }
     }
     printf("\n");
@@ -157,7 +157,7 @@ void PrintTree(BinTree P, int h) {
 
 /* Mengirimkan true jika ada node dari P yang bernilai X */
 boolean Search(BinTree P, infotype X) {
-   
+
 }
 
 
@@ -188,14 +188,23 @@ boolean IsSkewRight(BinTree P) {
 /* Mengirimkan level dari node X yang merupakan salah satu simpul dari */
 /* pohon biner P. Akar (P) levelnya adalah 1. Pohon tidak kosong */
 int Level(BinTree P, infotype X) {
-
+    if (P == NULL) return 0;
+    if (Info(P) == X) return 1;
+    int leftLevel = Level(Left(P), X);
+    int rightLevel = Level(Right(P), X);
+    if (leftLevel != 0) return leftLevel + 1;
+    if (rightLevel != 0) return rightLevel + 1;
+    return 0;
 }
 
 /* Pohon Biner mungkin Kosong, mengirimkan 'depth' yaitu tinggi dari Pohon */
 /* Basis : Pohon Kosong, tingginya Nol */
 /* Rekurens : 1 + maksimal (Depth (Anak Kiri), Depth  (Anak Kanan)) */
 int Depth(BinTree P) {
-
+    if (P == NULL) return 0;
+    int leftDepth = Depth(Left(P));
+    int rightDepth = Depth(Right(P));
+    return 1 + (leftDepth > rightDepth ? leftDepth : rightDepth);
 }
 
 /* Mengirimkan Nilai terbesar dari dua data */
