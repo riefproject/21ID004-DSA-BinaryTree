@@ -99,20 +99,36 @@ boolean IsEmpty(BinTree P) {
 /* IS : P terdefinisi */
 /* FS : Semua simpul P sudah diproses secara PreOrder : Akar, Kiri, Kanan */
 void PreOrder(BinTree P) {
-
+    if (P!= NULL){
+        printf("%c", Info(P));
+        InOrder(Left(P));
+        InOrder(Right(P));
+    }
 }
 
 /* Traversal InOrder menggunakan Rekursif */
 /* IS : P terdefinisi */
 /* FS : Semua simpul P sudah diproses secara InOrder : Kiri, Arak, Kanan */
 void InOrder(BinTree P) {
-
+    if (P!= NULL){
+        InOrder(Left(P));
+        printf("%c", Info(P));
+        InOrder(Right(P));
+    }
 }
 
 /* Traversal PostOrder menggunakan Rekursif */
 /* IS : P terdefinisi */
 /* FS : Semua simpul P sudah diproses secara PostOrder :  Kiri, Kanan, Akar */
 void PostOrder(BinTree P) {
+    if (P!= NULL){
+        InOrder(Right(P));
+        InOrder(Left(P));
+        printf("%c", Info(P));
+    }
+}
+
+void LevelOrder(BinTree P){
 
 }
 
@@ -127,7 +143,18 @@ void PrintTree(BinTree P, int h) {
 
 /* Mengirimkan true jika ada node dari P yang bernilai X */
 boolean Search(BinTree P, infotype X) {
-
+    if (P==NULL){
+        return NULL;
+    }
+    if (Info(P)==X){
+        return true;
+    }
+    address temp = BinSearch(Left(P),X);
+    if (temp == NULL){
+        temp = BinSearch(Right(P),X);
+    }
+    
+    return temp;
 }
 
 
@@ -168,8 +195,8 @@ int Depth(BinTree P) {
 }
 
 /* Mengirimkan Nilai terbesar dari dua data */
-int Max(infotype Data1, infotype Data2) {
-
+infotype Max(infotype Data1, infotype Data2) {
+    return Data1<Data2? Data2:Data1;
 }
 
 
