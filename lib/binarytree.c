@@ -152,7 +152,8 @@ boolean Search(BinTree P, infotype X) {
 
 /* Mengirimkan banyak elemen (node) pohon biner P */
 int nbElmt(BinTree P) {
-
+    if (P == NULL) return 0;
+    else return 1 + nbElmt(Left(P)) + nbElmt(Right(P));
 }
 
 /* Mengirimkan banyak daun (node) pohon biner P */

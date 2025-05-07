@@ -31,6 +31,7 @@ void showMenu() {
 
 void selectMenu(int choice, BinTree* tree) {
     do {
+        printf("banyak elemen tree sekarang: %d", nbElmt(*tree));
         showMenu();
         scanf("%d", &choice);
         switch (choice) {
