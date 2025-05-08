@@ -27,7 +27,7 @@ void showMenu()
     printf("8. Jumlah Daun/Leaf\n");
     printf("9. Mencari Keadalaman Node Tree\n");
     printf("10. Membandingkan 2 Node Tree\n");
-    printf("11. Exit\n");
+    printf("11. Exit\n\n");
     printf("Masukkan pilihan: ");
 }
 
@@ -35,7 +35,7 @@ void selectMenu(int choice, BinTree *tree)
 {
     do
     {
-        printf("banyak elemen tree sekarang: %d", nbElmt(*tree));
+        printf("\nbanyak elemen tree sekarang: %d", nbElmt(*tree));
         showMenu();
         scanf("%d", &choice);
         switch (choice)
@@ -122,18 +122,22 @@ void selectMenu(int choice, BinTree *tree)
             break;
         case 3:
             // Traversal PreOrder
+            printf("\nPreorder\n");
             PreOrder(*tree);
             break;
         case 4:
             // Traversal InOrder
+            printf("\nInOrder\n");
             InOrder(*tree);
             break;
         case 5:
             // Traversal PostOrder
+            printf("\nPostorder\n");
             PostOrder(*tree);
             break;
         case 6:
             // Traversal LevelOrder
+            printf("\nLevelOrder\n");
             LevelOrder(*tree);
             break;
         case 7:
@@ -155,9 +159,9 @@ void selectMenu(int choice, BinTree *tree)
             // Membandingkan 2 Node Tree
             infotype data1, data2;
             printf("Masukkan data node 1: ");
-            scanf("%c", &data1);
+            scanf(" %c", &data1);
             printf("Masukkan data node 2: ");
-            scanf("%c", &data2);
+            scanf(" %c", &data2);
             printf("Nilai terbesar dari %d dan %d adalah: %d\n", data1, data2, Max(data1, data2));
             break;
         case 11:

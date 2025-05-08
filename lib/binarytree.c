@@ -100,7 +100,7 @@ boolean IsEmpty(BinTree P) {
 /* FS : Semua simpul P sudah diproses secara PreOrder : Akar, Kiri, Kanan */
 void PreOrder(BinTree P) {
     if (P != NULL) {
-        printf("%c", Info(P));
+        printf("%c => ", Info(P));
         PreOrder(Left(P));
         PreOrder(Right(P));
     }
@@ -112,7 +112,7 @@ void PreOrder(BinTree P) {
 void InOrder(BinTree P) {
     if (P != NULL) {
         InOrder(Left(P));
-        printf("%c", Info(P));
+        printf("%c => ", Info(P));
         InOrder(Right(P));
     }
 }
@@ -124,7 +124,7 @@ void PostOrder(BinTree P) {
     if (P != NULL) {
         PostOrder(Left(P));
         PostOrder(Right(P));
-        printf("%c", Info(P));
+        printf("%c => ", Info(P));
     }
 }
 
@@ -135,7 +135,7 @@ void LevelOrder(BinTree P) {
     queue[rear++] = P;
     while (front < rear) {
         BinTree current = queue[front++];
-        printf("%c ", Info(current));
+        printf("%c => ", Info(current));
         if (Left(current) != NULL) {
             queue[rear++] = Left(current);
         }
@@ -182,7 +182,18 @@ void PrintTree(BinTree P, int h) {
 
 /* Mengirimkan true jika ada node dari P yang bernilai X */
 boolean Search(BinTree P, infotype X) {
+    if (P == NULL) {
+        return false;
+    }
+    if (Info(P) == X) {
+        return true;
+    }
+    boolean temp = Search(Left(P), X);
+    if (temp == false) {
+        temp = Search(Right(P), X);
+    }
 
+    return temp;
 }
 
 
