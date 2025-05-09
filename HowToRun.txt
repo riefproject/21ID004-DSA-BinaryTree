@@ -1,0 +1,22 @@
+Bahasa Indonesia:
+Compile menggunakan shell script menggunakan parameter (ADT atau Morse)
+
+1. Untuk compile Case Study 1 (ADT) gunakan perintah ini di terminal:
+    - command prompt   : . run.sh ADT
+    - powershell / git : ./run.sh ADT
+    
+    - manual           : 
+      a. compile : gcc -o SC1-ADT/main -ISC1-ADT/include SC1-ADT/main.c SC1-ADT/lib/binarytree.c SC1-ADT/lib/morse.c
+      b. run     : ./main.exe
+
+2. Untuk compile Case Study 2 (Morse) gunakan perintah ini di terminal:
+    - command prompt   : . run.sh Morse
+    - powershell / git : ./run.sh Morse
+    
+    - manual           : 
+      a. compile : gcc -o SC2-Morse/main -ISC2-Morse/include SC2-Morse/main.c SC2-Morse/lib/binarytree.c SC2-Morse/lib/morse.c
+      b. run     : ./main.exe
+
+NB: 
+- Di setiap main.c terdapat cara compile setiap Case Study
+- Biarkan PATH Anda berada di parent (Jangan masuk ke folder apapun setelah clone)
